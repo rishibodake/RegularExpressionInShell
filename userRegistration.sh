@@ -45,14 +45,20 @@ checkMobileNumber()
 	checkPattern=$mobileNumber
 }
 checkPassword() 
-{	#Atleast 1 UpperCase and atleast 1 Numeric
-	read -p "Enter Valid  Password: " password
+{
+	read -p "Enter valid Password: " password
+	patternForSpecialSymbol="[0-9a-zA-Z]*[!@#$%^&*]{1}[0-9a-zA-Z]*$"
 	if [[ ${#password} -gt 7 ]]
 	then
-		pattern="^[0-9a-zA-Z]*[A-Z0-9]+[0-9a-zA-Z]*[0-9]+[a-zA-Z]*$" 
-		checkPattern=$password
+		pattern="^[0-9a-zA-Z!@#$%^&*]*[A-Z0-9]+[0-9a-zA-Z]*[0-9]+[a-zA-Z0-9!@#$%^&*]*$"
+		if [[ $password =~ $patternForSpecialSymbol && $password =~ $pattern ]]
+		then
+			checkPattern=$password
+		else
+			printf "\nInvalid Input "
+		fi
 	else
-		printf "\nMinimum 8 Character Requierd"
+		printf "Minimum 8 Character or  Special Character Required\n"
 	fi
 }
 checkPattern() 
