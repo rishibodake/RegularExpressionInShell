@@ -7,6 +7,7 @@ clear
 FIRSTNAME=1
 LASTNAME=2
 EMAIL=3
+MOBILENUMBER=4
 checkFirstName()  
 {
    	read -p "Enter Valid The FirstName:" firstName
@@ -36,6 +37,12 @@ checkEmail()
 	pattern="^[0-9a-zA-Z]+([.]?[a-z0-9A-Z]?)+[@]{1}[a-z]+[.]{1}[a-z]+([.]?[a-z]{2})?$"
 	checkPattern=$email
 }
+checkMobileNumber()
+{
+	read -p "Enter Valid  MobileNumber:" mobileNumber
+	pattern="^[0-9]{2}[ ]{1}[0-9]{10}$"
+	checkPattern=$mobileNumber
+}
 checkPattern() 
 {
    	if [[ $checkPattern  =~ $pattern ]]
@@ -50,18 +57,22 @@ choose()
 	printf "1: For FirstName\n"
 	printf "2: For LastName\n"
 	printf "3: For Email\n"
+	printf "4: For MobileNumber\n"
 	read choice
 	case $choice in
 			$FIRSTNAME)
 				  checkFirstName
 				  checkPattern;;
-			$LASTNAME)
+			 $LASTNAME)
 				  checkLastName
 				  checkPattern;;
-			$EMAIL)
-				checkEmail
-				checkPattern;;
-				*)
+			    $EMAIL) 
+		            	  checkEmail
+				  checkPattern;;
+		     $MOBILENUMBER)
+				  checkMobileNumber
+				  checkPattern;;
+			       *)
 				  printf "Wrong Choice"
 	esac
 }
