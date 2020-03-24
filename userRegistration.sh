@@ -45,11 +45,11 @@ checkMobileNumber()
 	checkPattern=$mobileNumber
 }
 checkPassword() 
-{	#Atleast 1 UpperCase
+{	#Atleast 1 UpperCase and atleast 1 Numeric
 	read -p "Enter Valid  Password: " password
 	if [[ ${#password} -gt 7 ]]
 	then
-		pattern="^[0-9a-zA-Z]*[A-Z]+[0-9a-zA-Z]*$"
+		pattern="^[0-9a-zA-Z]*[A-Z0-9]+[0-9a-zA-Z]*[0-9]+[a-zA-Z]*$" 
 		checkPattern=$password
 	else
 		printf "\nMinimum 8 Character Requierd"
