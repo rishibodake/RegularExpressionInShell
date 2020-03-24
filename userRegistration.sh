@@ -11,7 +11,6 @@ checkFirstName()
    	read -p "Enter Valid The FirstName:" firstName
    	pattern="^[A-Z][a-zA-Z]{3,}$"   #minimum 3 character and starts with uppercase
    	checkPattern=$firstName 
-<<<<<<< HEAD
 }
 checkPattern() 
 {
@@ -22,7 +21,6 @@ checkPattern()
       		echo Invalil FirstNAme
       		checkFirstName	
   	 fi
-=======
 }
 checkLastName()
 {
@@ -55,7 +53,6 @@ choose()
 				*)
 				  printf "Wrong Choice"
 	esac
->>>>>>> UC2_ValidLastName
 }
 
 choose
